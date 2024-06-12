@@ -1,5 +1,7 @@
 import scrapy
 
+
+all_urls = []
 class ClassifiedSpider(scrapy.Spider):
     name = "classified_spider"
     base_url = "https://www.clasificadosonline.com/m/dmcListingm.asp?SecID=PR&keyword=&x=9&y="
@@ -13,5 +15,6 @@ class ClassifiedSpider(scrapy.Spider):
 
     def parse(self, response):
         listings = response.xpath("//td[@class='Ver14'][1]/font/a/@href").getall()
-        print(listings)
+        all_urls.append(listings)
+        print(all_urls)
 
